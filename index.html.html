@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- Control de Viewport para evitar auto-escalado erróneo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity-Grid | AquaTech Monitor</title>
+    <!-- Hoja de estilos externa independiente -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="logo">AquaTech</h1>
+            
+            <!-- Checkbox Hack para menú interactivo sin JS -->
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-btn" aria-label="Abrir menú">
+                <span class="sprite-icon icon-menu"></span>
+            </label>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">Panel Central</a></li>
+                    <li><a href="#" class="nav-link">Métricas</a></li>
+                    <li><a href="#" class="nav-link">Dispositivos</a></li>
+                    <li><a href="#" class="nav-link">Reportes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cuerpo Principal (Flexbox Contenedor) -->
+    <main class="main-layout">
+        
+        <!-- Encabezado del Dashboard -->
+        <header class="dashboard-intro">
+            <h2>Sistema de Monitoreo "Infinity-Grid"</h2>
+            <p>Datos en tiempo real de los sensores IoT en estanques acuícolas.</p>
+        </header>
+
+        <!-- Sección de Métricas IoT (CSS Grid Adaptativo) -->
+        <section class="metrics-grid">
+            
+            <!-- Card 1: pH -->
+            <article class="metric-card card-ph">
+                <div class="card-header">
+                    <h3>Nivel de pH</h3>
+                    <span class="status-badge status-good">Estable</span>
+                </div>
+                <div class="card-value">7.4</div>
+                <p class="card-footer">Óptimo para cultivo</p>
+            </article>
+
+            <!-- Card 2: Oxígeno -->
+            <article class="metric-card card-oxygen">
+                <div class="card-header">
+                    <h3>Oxígeno Disuelto</h3>
+                    <span class="status-badge status-warning">Alerta</span>
+                </div>
+                <div class="card-value">5.2 <span class="unit">mg/L</span></div>
+                <p class="card-footer">Flujo de aire requerido</p>
+            </article>
+
+            <!-- Card 3: Temperatura -->
+            <article class="metric-card card-temp">
+                <div class="card-header">
+                    <h3>Temperatura</h3>
+                    <span class="status-badge status-good">Normal</span>
+                </div>
+                <div class="card-value">24.8 <span class="unit">°C</span></div>
+                <p class="card-footer">Estanque Central</p>
+            </article>
+
+        </section>
+
+        <!-- Panel de Alertas Secundario para demostrar estabilidad de Flexbox -->
+        <section class="alerts-panel">
+            <h3>Últimas Alertas del Sistema</h3>
+            <p>No se registran colisiones críticas de hardware en las últimas 24 horas.</p>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="main-footer">
+        <p>&copy; 2026 AquaTech Cloud Solutions. Monitoreo Activo.</p>
+    </footer>
+
+</body>
+</html>
