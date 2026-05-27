@@ -54,7 +54,7 @@ header.main-header {
     display: block;
     width: 32px;
     height: 32px;
-    background-image: url('../img/sprite.png');
+    background-image: url('/IMG/sprite.png');
     background-repeat: no-repeat;
     background-size: 32px 64px;
     background-position: 0 0;
