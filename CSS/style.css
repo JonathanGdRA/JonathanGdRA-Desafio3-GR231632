@@ -1,107 +1,90 @@
-/* ==========================================================================
-   1. RESET & VARIABLES BIENESTAR DE CAJA
-   ========================================================================== */
-*, *::before, *::after {
+/* reset general */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --primary-color: #0284c7;
-    --primary-dark: #0369a1;
-    --bg-base: #f8fafc;
-    --bg-card: #ffffff;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --success: #22c55e;
-    --warning: #f59e0b;
-    --border-color: #e2e8f0;
-}
-
+/* udb cambiar paleta si da tiempo al final */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-base);
-    color: var(--text-main);
-    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
 }
 
-/* ==========================================================================
-   2. ESTILOS BASE MÓVIL (Por defecto: < 600px) - MOBILE FIRST
-   ========================================================================== */
+/* styles base movil */
 
-/* Layout Principal con Flexbox */
-.main-layout {
+main.contenedor-principal {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
-    min-height: 80vh; /* Mitiga colisiones y garantiza alturas dinámicas */
+    gap: 20px;
+    padding: 15px;
 }
 
-/* Header Comercial */
-.main-header {
+.introduccion h2 {
+    font-size: 24px;
+    color: #0284c7;
+}
+
+.introduccion p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+header.main-header {
     background-color: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 15px;
     position: relative;
 }
 
 .logo {
-    font-size: 1.25rem;
-    color: var(--primary-color);
-    font-weight: 700;
+    font-size: 20px;
+    color: #0284c7;
 }
 
-/* --- CSS SPRITES CONFIGURACIÓN --- */
-/* Nota: Se asume un archivo sprite de 32x64px con dos iconos de 32x32px */
-.sprite-icon {
+/* sprite configuracion udb */
+.icon-sprite {
     display: block;
     width: 32px;
     height: 32px;
-    background-image: url('../img/sprites.png');
+    background-image: url('/IMG/sprite.png');
     background-repeat: no-repeat;
+    background-size: 32px 64px;
+    background-position: 0 0;
 }
 
-/* Mapeo milimétrico de posiciones */
-.icon-menu {
-    background-position: 0 0; /* Primer icono (Hamburguesa) */
-}
-
-/* En caso de requerir el segundo icono en hover o cambio de estado */
-.menu-checkbox:checked + .menu-btn .icon-menu {
-    background-position: 0 -32px; /* Segundo icono (X de cerrar) */
-}
-
-/* --- NAV RESPONSIVO (CHECKBOX HACK) --- */
+/* hack css checkbox */
 .menu-checkbox {
-    display: none; /* Ocultamos el input de control */
+    display: none;
 }
 
 .menu-btn {
     cursor: pointer;
-    display: block; /* Visible en móvil */
-    padding: 0.25rem;
+    display: block;
 }
 
+/* cambio a la x del sprite */
+.menu-checkbox:checked + .menu-btn .icon-sprite {
+    background-position: 0 -32px;
+}
+
+/* menu colapsado en celular */
 .nav-menu {
-    display: none; /* Oculto por defecto en móvil */
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     background-color: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 10;
 }
 
 .nav-list {
@@ -112,158 +95,139 @@ body {
 
 .nav-link {
     display: block;
-    padding: 1rem;
-    color: var(--text-main);
+    padding: 12px 20px;
+    color: #0f172a;
     text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .nav-link:hover, .nav-link:active {
-    background-color: var(--bg-base);
-    color: var(--primary-color);
+    background-color: #f1f5f9;
+    color: #0284c7;
 }
 
-/* Activación transicional nativa mediante CSS Hack */
+/* mostrar menu con selector hermano */
 .menu-checkbox:checked ~ .nav-menu {
     display: block;
 }
 
-/* --- SECCIÓN DE MÉTRICAS (MÓVIL: 1 COLUMNA) --- */
-.metrics-grid {
+/* grid de 1 columna movil */
+.grid-monitoreo {
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna en móvil */
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
-.metric-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
+.tarjeta-sensor {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 20px;
 }
 
-.card-header {
+.card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
-.card-header h3 {
-    font-size: 1rem;
-    color: var(--text-muted);
+.card-top h3 {
+    font-size: 14px;
+    color: #64748b;
 }
 
-.status-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
+.badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
 }
 
-.status-good { background-color: #e8f5e9; color: var(--success); }
-.status-warning { background-color: #fff3e0; color: var(--warning); }
+.verde { background-color: #e8f5e9; color: #22c55e; }
+.naranja { background-color: #fff3e0; color: #f59e0b; }
 
-.card-value {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.valor {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-.card-value .unit {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-muted);
+.unidad {
+    font-size: 14px;
+    color: #64748b;
 }
 
-.card-footer {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+.txt-abajo {
+    font-size: 12px;
+    color: #94a3b8;
 }
 
-/* Otras secciones */
-.alerts-panel {
-    background-color: #fff;
-    padding: 1.25rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.main-footer {
+.pie-pagina {
     text-align: center;
-    padding: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border-color);
-    margin-top: 2rem;
+    padding: 20px;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 30px;
+    border-top: 1px solid #e2e8f0;
 }
 
-/* ==========================================================================
-   3. BREAKPOINT: TABLET (min-width: 600px)
-   ========================================================================== */
+/* media query tablet */
 @media (min-width: 600px) {
-    .main-layout {
-        padding: 2rem;
+    main.contenedor-principal {
+        padding: 25px;
     }
-
-    /* Grid se adapta de forma fluida a 2 columnas en tablet */
-    .metrics-grid {
+    
+    .grid-monitoreo {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* ==========================================================================
-   4. BREAKPOINT: DESKTOP & 4K (min-width: 1024px)
-   ========================================================================== */
+/* media query desktop */
 @media (min-width: 1024px) {
     .header-container {
-        max-width: 1200px;
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 1rem 2rem;
     }
 
-    /* Desactivar menú móvil y transformarlo en horizontal de escritorio */
+    /* no borrar  */
     .menu-btn {
-        display: none; /* Escondemos el botón de hamburguesa */
+        display: none;
     }
 
     .nav-menu {
-        display: block !important; /* Forzamos visualización */
+        display: block !important;
         position: static;
         width: auto;
-        box-shadow: none;
         border-bottom: none;
     }
 
     .nav-list {
         flex-direction: row;
-        gap: 1.5rem;
+        gap: 20px;
     }
 
     .nav-link {
-        padding: 0.5rem 0;
+        padding: 5px 0;
         border-bottom: none;
     }
-    
+
     .nav-link:hover {
         background-color: transparent;
-        border-bottom: 2px solid var(--primary-color);
+        color: #0284c7;
     }
 
-    /* El cuerpo pasa a una distribución más holgada */
-    .main-layout {
-        max-width: 1200px;
+    /*.nav-link:hover {
+        background-color: color: #0284c7;
+    }*/
+
+    main.contenedor-principal {
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 2.5rem 2rem;
+        padding: 40px 15px;
     }
 
-    /* GRID AUTOMÁTICO EN 3 COLUMNAS SIMÉTRICAS SIN ROMPER LAYOUT */
-    .metrics-grid {
+    .grid-monitoreo {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        gap: 20px;
     }
 }
